@@ -7,16 +7,8 @@ netsh advfirewall firewall add rule name="Remote Desktop" dir=in localport=3389 
 
 Update-ExecutionPolicy -Policy Unrestricted
 
-if (Test-Command -cmdname 'Uninstall-WindowsFeature') {
-    Write-BoxstarterMessage "Removing unused features..."
-    Remove-WindowsFeature -Name 'Powershell-ISE'
-    Get-WindowsFeature | 
-    ? { $_.InstallState -eq 'Available' } | 
-    Uninstall-WindowsFeature -Remove
-}
-
-
-Install-WindowsUpdate -AcceptEula
+# SKIP updates
+#Install-WindowsUpdate -AcceptEula
 
 Write-BoxstarterMessage "Removing page file"
 $pageFileMemoryKey = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"
