@@ -7,10 +7,10 @@ powershell_script "install-#{mod}" do
   $env:PSModulePath = [System.Environment]::GetEnvironmentVariable("PSModulePath","Machine")
   EOH
   guard_interpreter :powershell_script
-  not_if "Get-Module -ListAvailable -Name #{mod}"
+  not_if "(Get-Module -ListAvailable -Name #{mod}).Name -eq \"#{mod}\""
 end
 
-dsc_script 'activate-windows' do
+dsc_script 'setup-xWindowsUpdate' do
   imports 'xWindowsUpdate'
   code <<-EOH
   xWindowsUpdateAgent MuSecurityImportant
