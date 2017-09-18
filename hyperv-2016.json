@@ -27,7 +27,6 @@
       "cookbook_paths": ["cookbooks", "vendor/cookbooks"],
       "guest_os_type": "windows",
       "run_list": [
-        "wsus-client::configure",
         "packer-templates::uninstall_powershell_ise",
         "packer-templates::install_ps_modules",
         "packer-templates::delete_pagefile"
