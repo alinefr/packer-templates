@@ -12,13 +12,14 @@ end
 
 dsc_script 'setup-xWindowsUpdate' do
   imports 'xWindowsUpdate'
+  timeout 800
   code <<-EOH
   xWindowsUpdateAgent MuSecurityImportant
   {
     IsSingleInstance = 'Yes'
     UpdateNow        = $true
     Category         = @('Security','Important')
-    Source           = 'MicrosoftUpdate'
+    Source           = 'WindowsUpdate'
     Notifications    = 'Disabled'
   }
   EOH
