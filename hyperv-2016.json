@@ -25,11 +25,19 @@
   ],
   "provisioners": [
     {
+     "type": "windows-shell",
+     "elevated_user": "vagrant",
+    "elevated_password": "vagrant",
+     "scripts": [
+       "./scripts/microsoft-updates.bat"
+      ]
+    },
+
+    {
      "type": "powershell",
      "elevated_user": "vagrant",
     "elevated_password": "vagrant",
      "scripts": [
-       "./scripts/microsoft-updates.bat",
        "./scripts/win-updates.ps1"
       ]
     },
