@@ -17,11 +17,22 @@
       "switch_name": "{{ user `switch_name` }}",
       "floppy_files": [
         "answer_files/2016/Autounattend.xml",
-        "scripts/winrm.ps1"
+        "scripts/winrm.ps1",
+        "./scripts/microsoft-updates.bat",
+        "./scripts/win-updates.ps1"
       ]
     }
   ],
   "provisioners": [
+    {
+     "type": "shell",
+     "remote_path": "/tmp/script.bat",
+     "execute_command": "{{.Vars}} cmd /c C:/Windows/Temp/script.bat",
+     "scripts": [
+       "./scripts/microsoft-updates.bat",
+       "./scripts/win-updates.ps1"
+      ]
+    },
     {
       "type": "chef-solo",
       "cookbook_paths": ["cookbooks", "vendor/cookbooks"],
