@@ -26,8 +26,6 @@
   "provisioners": [
     {
      "type": "windows-shell",
-     "elevated_user": "vagrant",
-    "elevated_password": "vagrant",
      "scripts": [
        "./scripts/microsoft-updates.bat"
       ]
