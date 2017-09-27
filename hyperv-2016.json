@@ -25,9 +25,9 @@
   ],
   "provisioners": [
     {
-     "type": "shell",
-     "remote_path": "/tmp/script.bat",
-     "execute_command": "{{.Vars}} cmd /c C:/Windows/Temp/script.bat",
+     "type": "powershell",
+     "elevated_user": "vagrant",
+    "elevated_password": "vagrant",
      "scripts": [
        "./scripts/microsoft-updates.bat",
        "./scripts/win-updates.ps1"
